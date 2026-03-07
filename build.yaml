@@ -1,0 +1,12 @@
+include:
+    # Mriya
+    - board: mriya_left
+    - board: mriya_right
+    # # Keyboard2 (пример для shield-based клавиатуры)
+    # - board: nice_nano_v2
+    #   shield: keyboard2_left
+    # - board: nice_nano_v2
+    #   shield: keyboard2_right
+    # Общее
+    - board: nice_nano_v2
+      shield: settings_reset
