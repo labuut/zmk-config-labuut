@@ -54,7 +54,7 @@
 #define TOP_RIGHT_KEY_INDEX 11
 
 // tap global params
-&lt { quick_tap_ms = <100>; };
+&lt { quick-tap-ms = <100>; };
 &mt { quick-tap-ms = <400>; };
 
 // tap mods

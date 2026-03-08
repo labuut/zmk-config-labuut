@@ -1,0 +1,9 @@
+boards:
+  - name: mriya_left
+    vendor: labuut
+    socs:
+      - name: nrf52840
+  - name: mriya_right
+    vendor: labuut
+    socs:
+      - name: nrf52840
