@@ -1,7 +1,7 @@
 include:
     # Mriya
-    - board: mriya_left
-    - board: mriya_right
+    - board: mriya_left/nrf52840/zmk
+    - board: mriya_right/nrf52840/zmk
     # # Keyboard2 (пример для shield-based клавиатуры)
     # - board: nice_nano_v2
     #   shield: keyboard2_left

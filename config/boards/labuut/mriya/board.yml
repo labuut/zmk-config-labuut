@@ -3,7 +3,11 @@ boards:
     vendor: labuut
     socs:
       - name: nrf52840
+        variants:
+          - name: zmk
   - name: mriya_right
     vendor: labuut
     socs:
       - name: nrf52840
+        variants:
+          - name: zmk
