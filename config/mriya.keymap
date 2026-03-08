@@ -94,6 +94,20 @@
       display-name = "Toggle Layer Off";
       toggle-mode = "off";
     };
+    // tap dance to service layer
+    b_td_serv: b_td_serv {
+      compatible = "zmk,behavior-tap-dance";
+      #binding-cells = <0>;
+      tapping-term-ms = <200>;
+      bindings = <&kp B>, <&kp B>, <&kp B>, <&kp B>, <&kp B>, <&kp X>, <&mo LR_SERV>;
+    };
+    // tap dance to service layer
+    n_td_serv: b_td_serv {
+      compatible = "zmk,behavior-tap-dance";
+      #binding-cells = <0>;
+      tapping-term-ms = <200>;
+      bindings = <&kp N>, <&kp N>, <&kp N>, <&kp N>, <&kp N>, <&kp X>, <&mo LR_SERV>;
+    };
   };
 };
 
@@ -333,24 +347,24 @@
     LR_MAIN_EN {
       bindings = <
       // row 1
-      &kp ESC        &kp Q   &kp W   &kp E         &kp R   &kp T            &kp Y   &kp U   &kp I   &kp O   &kp P       &none
+      &kp ESC        &kp Q   &kp W   &kp E         &kp R   &kp T                 &kp Y   &kp U   &kp I   &kp O   &kp P       &none
       // row 2
-      &mt LWIN TAB   &kp A   &kp S   &kp D         &kp F   &kp G            &kp H   &kp J   &kp K   &kp L   &none       &kp BSPC
+      &mt LWIN TAB   &kp A   &kp S   &kp D         &kp F   &kp G                 &kp H   &kp J   &kp K   &kp L   &none       &kp BSPC
       // row 3
-      &kp LCTRL      &kp Z   &kp X   &lt LR_FN C   &kp V   &kp B            &kp N   &kp M   &none   &none   &kp COMMA   &kp DOT
+      &kp LCTRL      &kp Z   &kp X   &lt LR_FN C   &kp V   &b_td_serv            &kp N   &kp M   &none   &none   &kp COMMA   &kp DOT
       // thumb row
-      &none   &mt LALT ENTER   &kp LSHFT   &lt LR_NUMS SPACE                &navmt 0 SPACE   &mo LR_WILDS_EN   &lt LR_MEDIA ENTER   &none
+      &none   &mt LALT ENTER   &kp LSHFT   &lt LR_NUMS SPACE                     &navmt 0 SPACE   &mo LR_WILDS_EN   &lt LR_MEDIA ENTER   &none
       >;
     };
     
     LR_MAIN_RU {
       bindings = <
       // row 1
-      &trans   &kp Q   &kp W   &kp E         &kp R   &cmt GRAVE T            &kp Y   &kp U          &kp I       &kp O     &kp P       &kp LBKT
+      &trans   &kp Q   &kp W   &kp E         &kp R   &cmt GRAVE T            &kp Y        &kp U          &kp I       &kp O     &kp P       &kp LBKT
       // row 2
-      &trans   &kp A   &kp S   &kp D         &kp F   &kp G                   &kp H   &cmt SQT J     &kp K       &kp L     &kp SEMI    &trans
+      &trans   &kp A   &kp S   &kp D         &kp F   &kp G                   &kp H        &cmt SQT J     &kp K       &kp L     &kp SEMI    &trans
       // row 3
-      &trans   &kp Z   &kp X   &lt LR_FN C   &kp V   &kp B                   &kp N   &cmt RBKT M    &kp COMMA   &kp DOT   &COMMA_RU   &DOT_RU
+      &trans   &kp Z   &kp X   &lt LR_FN C   &kp V   &kp B                   &n_td_serv   &cmt RBKT M    &kp COMMA   &kp DOT   &COMMA_RU   &DOT_RU
       // thumb row
       &trans   &trans   &trans   &trans                                      &trans   &mo LR_WILDS_RU   &trans   &trans
       >;
@@ -478,13 +492,13 @@
     LR_SERV {
       bindings = <
       // row 1
-      &to LR_MAIN_EN   &none   &none   &none   &none   &bootloader            &bootloader   &none          &none          &none          &none   &to LR_MAIN_EN
+      &to LR_MAIN_EN   &none   &none   &none   &none   &bootloader                                 &bootloader   &none          &none          &none          &none   &to LR_MAIN_EN
       // row 2
-      &none            &none   &none   &none   &none   &sys_reset             &sys_reset    &none          &none          &none          &none   &none
+      &none            &none   &none   &none   &none   &sys_reset                                  &sys_reset    &none          &none          &none          &none   &none
       // row 3
-      &none            &none   &none   &none   &none   &SRVC_TEST             &SRVC_TEST    &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &none   &bt BT_CLR 
+      &bt BT_CLR       &none   &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &SRVC_TEST             &SRVC_TEST    &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &none   &bt BT_CLR 
       // thumb row
-      &trans   &trans   &trans   &trans                                       &trans   &trans   &trans   &trans
+      &trans   &trans   &trans   &trans                                                            &trans   &trans   &trans   &trans
       >;
     };
   };
