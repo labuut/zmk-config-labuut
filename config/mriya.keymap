@@ -4,12 +4,13 @@
 #include <dt-bindings/zmk/pointing.h>
 #include <input/processors.dtsi>
 
-// times
-#define TAP_TIME_SHORT 10 // ms
-#define TAP_TIME_NORMAL 30 // ms
+// times (ms)
+#define TAP_TIME_SHORT 10
+#define TAP_TIME_NORMAL 30
 
-#define WAITING_TIME_NULL 0 // ms
-#define WAITING_TIME_SHORT 5 // ms
+#define WAITING_TIME_NULL 0
+#define WAITING_TIME_SHORT 5
+#define LONG_HOLD 5000
 
 // layers
 #define LR_MAIN_EN   0
@@ -25,14 +26,14 @@
 #define LR_MEDIA     10
 #define LR_SERV      11
 
-// key shortcuts
-#define OS_EN_LAYOUT_SCUT LA(LS(N8))
-#define OS_RU_LAYOUT_SCUT LA(LS(N9))
+// hotkeys (hkey)
+#define OS_EN_LAYOUT_HKEY LA(LS(N8)) // OS hotkey for EN (alt + shift + 8)
+#define OS_RU_LAYOUT_HKEY LA(LS(N9)) // OS hotkey for RU (alt + shift + 9)
 
-// RU key shortcuts
-#define COMMA_RU_SCUT LS(FSLH)
-#define DOT_RU_KEY FSLH
-#define NUMERO_RU_SCUT LS(N3)
+// RU hotkeys
+#define COMMA_RU_HKEY LS(FSLH) // shift + /
+#define DOT_RU_KEY FSLH        // /
+#define NUMERO_RU_HKEY LS(N3)  // shift + 3
 
 // key indexes
 #define LEFT_HAND_KEYS_INDEXES \
@@ -74,12 +75,12 @@
       quick-tap-ms = <200>;
       bindings = <&TO_NAV>, <&kp>; // <hold fn>, <tap fn>;
     };
-    // hold-tap for service layer (hold 5s to activate, tap does nothing)
+    // hold-tap for layer (tap for nothing, hold 5s to activate layer)
     serv_ht: serv_ht {
       compatible = "zmk,behavior-hold-tap";
       #binding-cells = <2>;
       flavor = "hold-preferred";
-      tapping-term-ms = <5000>;
+      tapping-term-ms = <LONG_HOLD>;
       bindings = <&to>, <&kp>;
     };
     // toggle off layer
@@ -106,7 +107,7 @@
     COMMA_RU: COMMA_RU {
       compatible = "zmk,behavior-mod-morph";
       #binding-cells = <0>;
-      bindings = <&kp COMMA_RU_SCUT>, <&kp COMMA>;
+      bindings = <&kp COMMA_RU_HKEY>, <&kp COMMA>;
       mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
       keep-mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
     };
@@ -160,7 +161,7 @@
       wait-ms = <WAITING_TIME_NULL>;
       tap-ms = <TAP_TIME_SHORT>;
       bindings =
-      <&kp OS_EN_LAYOUT_SCUT>,
+      <&kp OS_EN_LAYOUT_HKEY>,
       <&to LR_MAIN_EN>;
     };
     TO_LR_MAIN_RU: TO_LR_MAIN_RU {
@@ -169,7 +170,7 @@
       wait-ms = <WAITING_TIME_NULL>;
       tap-ms = <TAP_TIME_SHORT>;
       bindings =
-      <&kp OS_RU_LAYOUT_SCUT>,
+      <&kp OS_RU_LAYOUT_HKEY>,
       <&to LR_MAIN_RU>;
     };
     TO_WILDS_RU: TO_WILDS_RU {
@@ -178,11 +179,11 @@
       wait-ms = <WAITING_TIME_NULL>;
       tap-ms = <TAP_TIME_SHORT>;
       bindings =
-      <&kp OS_EN_LAYOUT_SCUT>,
+      <&kp OS_EN_LAYOUT_HKEY>,
       <&to LR_WILDS_EN>,
       <&macro_pause_for_release>,
       <&to LR_MAIN_RU>,
-      <&kp OS_RU_LAYOUT_SCUT>;
+      <&kp OS_RU_LAYOUT_HKEY>;
     };
     TO_NAV: TO_NAV {
       compatible = "zmk,behavior-macro";
@@ -202,10 +203,10 @@
       wait-ms = <WAITING_TIME_NULL>;
       tap-ms = <TAP_TIME_SHORT>;
       bindings =
-      <&kp OS_RU_LAYOUT_SCUT>,
+      <&kp OS_RU_LAYOUT_HKEY>,
       <&macro_param_1to1>,
       <&kp MACRO_PLACEHOLDER>,
-      <&kp OS_EN_LAYOUT_SCUT>;
+      <&kp OS_EN_LAYOUT_HKEY>;
     };
     wldr: wldr { // for RU wild layer
       compatible = "zmk,behavior-macro-one-param";
@@ -213,10 +214,10 @@
       wait-ms = <WAITING_TIME_NULL>;
       tap-ms = <TAP_TIME_SHORT>;
       bindings =
-      <&kp OS_EN_LAYOUT_SCUT>,
+      <&kp OS_EN_LAYOUT_HKEY>,
       <&macro_param_1to1>,
       <&kp MACRO_PLACEHOLDER>,
-      <&kp OS_RU_LAYOUT_SCUT>;
+      <&kp OS_RU_LAYOUT_HKEY>;
     };
     // RU wild keys
     FSLSH_BSLSH_RU: FSLSH_BSLSH_RU {
@@ -225,9 +226,9 @@
       wait-ms = <WAITING_TIME_NULL>;
       tap-ms = <TAP_TIME_SHORT>;
       bindings =
-      <&kp OS_EN_LAYOUT_SCUT>,
+      <&kp OS_EN_LAYOUT_HKEY>,
       <&FSLSH_BSLSH>,
-      <&kp OS_RU_LAYOUT_SCUT>;
+      <&kp OS_RU_LAYOUT_HKEY>;
     };
     L_PAR_BRC_RU: L_PAR_BRC_RU {
       compatible = "zmk,behavior-macro";
@@ -235,9 +236,9 @@
       wait-ms = <WAITING_TIME_NULL>;
       tap-ms = <TAP_TIME_SHORT>;
       bindings =
-      <&kp OS_EN_LAYOUT_SCUT>,
+      <&kp OS_EN_LAYOUT_HKEY>,
       <&L_PAR_BRC>,
-      <&kp OS_RU_LAYOUT_SCUT>;
+      <&kp OS_RU_LAYOUT_HKEY>;
     };
     R_PAR_BRC_RU: R_PAR_BRC_RU {
       compatible = "zmk,behavior-macro";
@@ -245,9 +246,9 @@
       wait-ms = <WAITING_TIME_NULL>;
       tap-ms = <TAP_TIME_SHORT>;
       bindings =
-      <&kp OS_EN_LAYOUT_SCUT>,
+      <&kp OS_EN_LAYOUT_HKEY>,
       <&R_PAR_BRC>,
-      <&kp OS_RU_LAYOUT_SCUT>;
+      <&kp OS_RU_LAYOUT_HKEY>;
     };
     LT_LBKT_RU: LT_LBKT_RU {
       compatible = "zmk,behavior-macro";
@@ -255,9 +256,9 @@
       wait-ms = <WAITING_TIME_NULL>;
       tap-ms = <TAP_TIME_SHORT>;
       bindings =
-      <&kp OS_EN_LAYOUT_SCUT>,
+      <&kp OS_EN_LAYOUT_HKEY>,
       <&LT_LBKT>,
-      <&kp OS_RU_LAYOUT_SCUT>;
+      <&kp OS_RU_LAYOUT_HKEY>;
     };
     GT_RBKT_RU: GT_RBKT_RU {
       compatible = "zmk,behavior-macro";
@@ -265,9 +266,9 @@
       wait-ms = <WAITING_TIME_NULL>;
       tap-ms = <TAP_TIME_SHORT>;
       bindings =
-      <&kp OS_EN_LAYOUT_SCUT>,
+      <&kp OS_EN_LAYOUT_HKEY>,
       <&GT_RBKT>,
-      <&kp OS_RU_LAYOUT_SCUT>;
+      <&kp OS_RU_LAYOUT_HKEY>;
     };
     // service layer test output
     SRVC_TEST: SRVC_TEST {
@@ -306,7 +307,7 @@
   };
 };
 
-// '&mmv', '&mmv_input_listener' got from prostas: https://github.com/proostas/colemator-layout-zmk-module/blob/main/include/colemator/mouse.dtsi
+// '&mmv', '&mmv_input_listener' (from proostas: https://github.com/proostas/colemator-layout-zmk-module/blob/main/include/colemator/mouse.dtsi)
 &mmv {
   acceleration-exponent = <1>;  // 1
   time-to-max-speed-ms = <300>; // 300
@@ -357,7 +358,7 @@
     LR_WILDS_EN {
       bindings = <
       // row 1
-      &kp GRAVE   &wlde NUMERO_RU_SCUT   &kp HASH   &kp PIPE   &kp AMPS    &kp CARET            &kp PRCNT   &FSLSH_BSLSH   &kp ASTRK    &kp SQT     &kp DQT    &none
+      &kp GRAVE   &wlde NUMERO_RU_HKEY   &kp HASH   &kp PIPE   &kp AMPS    &kp CARET            &kp PRCNT   &FSLSH_BSLSH   &kp ASTRK    &kp SQT     &kp DQT    &none
       // row 2
       &trans      &none                  &kp AT     &kp EXCL   &kp QMARK   &none                &kp EQUAL   &kp MINUS      &kp PLUS     &kp COLON   &kp SEMI   &trans
       // row 3
@@ -370,7 +371,7 @@
     LR_WILDS_RU {
       bindings = <
       // row 1
-      &wldr GRAVE   &kp NUMERO_RU_SCUT   &wldr HASH   &wldr PIPE   &wldr AMPS    &wldr CARET            &kp PRCNT   &FSLSH_BSLSH_RU   &wldr ASTRK     &wldr SQT     &wldr DQT     &none
+      &wldr GRAVE   &kp NUMERO_RU_HKEY   &wldr HASH   &wldr PIPE   &wldr AMPS    &wldr CARET            &kp PRCNT   &FSLSH_BSLSH_RU   &wldr ASTRK     &wldr SQT     &wldr DQT     &none
       // row 2
       &trans        &none                &wldr AT     &kp EXCL     &wldr QMARK   &none                  &kp EQUAL   &kp MINUS         &kp PLUS        &wldr COLON   &wldr SEMI    &trans
       // row 3
