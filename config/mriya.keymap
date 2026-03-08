@@ -500,7 +500,7 @@
       // row 1
       &to LR_MAIN_EN   &none   &none          &none          &none          &bootloader            &bootloader   &none          &none          &none          &none   &to LR_MAIN_EN
       // row 2
-      &bt BT_CLR_ALL            &none   &none          &none          &none          &sys_reset             &sys_reset    &none          &none          &none          &none   &none
+      &bt BT_CLR_ALL   &none   &none          &none          &none          &sys_reset             &sys_reset    &none          &none          &none          &none   &bt BT_CLR_ALL
       // row 3
       &bt BT_CLR       &none   &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &SRVC_TEST             &SRVC_TEST    &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &none   &bt BT_CLR 
       // thumb row
