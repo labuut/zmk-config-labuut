@@ -102,7 +102,7 @@
       bindings = <&kp B>, <&kp B>, <&kp B>, <&kp B>, <&kp B>, <&kp X>, <&mo LR_SERV>;
     };
     // tap dance to service layer
-    n_td_serv: b_td_serv {
+    n_td_serv: n_td_serv {
       compatible = "zmk,behavior-tap-dance";
       #binding-cells = <0>;
       tapping-term-ms = <200>;
