@@ -422,9 +422,9 @@
     LR_MOUSE {
       bindings = <
       // row 1
-      &trans   &trans   &mkp RCLK   &mkp MCLK        &mkp LCLK        &trans            &trans          &none            &mmv MOVE_UP     &none             &none    &trans
+      &trans   &trans   &trans      &mo LR_MOUSE_F   &mo LR_MOUSE_S   &trans            &trans          &none            &mmv MOVE_UP     &none             &none    &trans
       // row 2
-      &trans   &trans   &trans      &mo LR_MOUSE_S   &mo LR_MOUSE_F   &trans            &trans          &mmv MOVE_LEFT   &mmv MOVE_DOWN   &mmv MOVE_RIGHT   &none    &trans
+      &trans   &trans   &mkp RCLK   &mkp MCLK        &mkp LCLK        &trans            &trans          &mmv MOVE_LEFT   &mmv MOVE_DOWN   &mmv MOVE_RIGHT   &none    &trans
       // row 3
       &trans   &trans   &trans      &trans           &trans           &trans            &tog LR_MOUSE   &trans           &trans           &trans            &trans   &trans
       // thumb row
