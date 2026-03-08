@@ -95,6 +95,14 @@
       tapping-term-ms = <5000>;
       bindings = <&to>, <&kp>;
     };
+    // hold BT_CLR 5s = BT_CLR_ALL, tap = BT_CLR
+    bt_clr_ht: bt_clr_ht {
+      compatible = "zmk,behavior-hold-tap";
+      #binding-cells = <2>;
+      flavor = "hold-preferred";
+      tapping-term-ms = <5000>;
+      bindings = <&bt>, <&bt>;
+    };
     // toggle off layer
     tog_off: tog_off {
       compatible = "zmk,behavior-toggle-layer";
@@ -502,7 +510,7 @@
       // row 2
       &none            &none   &none          &none          &none          &sys_reset             &sys_reset    &none          &none          &none          &none   &none
       // row 3
-      &bt BT_CLR       &none   &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &SRVC_TEST             &SRVC_TEST    &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &none   &bt BT_CLR 
+      &bt_clr_ht BT_CLR_ALL BT_CLR      &none   &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &SRVC_TEST             &SRVC_TEST    &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &none   &bt_clr_ht BT_CLR_ALL BT_CLR
       // thumb row
       &trans   &trans   &trans   &trans                                                            &trans   &trans   &trans   &trans
       >;
