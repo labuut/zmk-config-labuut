@@ -410,26 +410,26 @@
     LR_NAV {
       bindings = <
       // row 1
-      &trans   &trans   &trans   &trans   &trans   &trans            &kp PG_UP       &kp HOME         &kp UP         &kp END     &none    &kp K_APP
+      &trans   &trans   &trans   &trans   &trans   &msc SCRL_UP              &kp PG_UP   &kp HOME   &kp UP     &kp END     &none           &trans
       // row 2
-      &trans   &trans   &trans   &trans   &trans   &trans            &kp PG_DN       &kp LEFT         &kp DOWN       &kp RIGHT   &none    &trans
+      &trans   &trans   &trans   &trans   &trans   &msc SCRL_DOWN            &kp PG_DN   &kp LEFT   &kp DOWN   &kp RIGHT   &tog LR_MOUSE   &trans
       // row 3
-      &trans   &trans   &trans   &trans   &trans   &trans            &tog LR_MOUSE   &msc SCRL_DOWN   &msc SCRL_UP   &none       &trans   &trans
+      &trans   &trans   &trans   &trans   &trans   &trans                    &none       &none      &none      &none       &kp K_APP       &trans
       // thumb row
-      &trans   &trans   &trans   &trans                              &trans   &trans   &trans   &trans
+      &trans   &trans   &trans   &trans                                      &trans   &trans   &trans   &trans
       >;
     };
     
     LR_MOUSE {
       bindings = <
       // row 1
-      &trans   &trans   &trans      &mo LR_MOUSE_F   &mo LR_MOUSE_S   &trans            &trans          &none            &mmv MOVE_UP     &none             &none    &trans
+      &trans   &trans   &trans      &mo LR_MOUSE_F   &mo LR_MOUSE_S   &msc SCRL_UP              &kp PG_UP   &none            &mmv MOVE_UP     &none             &none           &trans
       // row 2
-      &trans   &trans   &mkp RCLK   &mkp MCLK        &mkp LCLK        &trans            &trans          &mmv MOVE_LEFT   &mmv MOVE_DOWN   &mmv MOVE_RIGHT   &none    &trans
+      &trans   &trans   &mkp RCLK   &mkp MCLK        &mkp LCLK        &msc SCRL_DOWN            &kp PG_DN   &mmv MOVE_LEFT   &mmv MOVE_DOWN   &mmv MOVE_RIGHT   &tog LR_MOUSE   &trans
       // row 3
-      &trans   &trans   &trans      &trans           &trans           &trans            &tog LR_MOUSE   &trans           &trans           &trans            &trans   &trans
+      &trans   &trans   &trans      &trans           &trans           &trans                    &none       &mkp LCLK        &mkp MCLK        &mkp RCLK         &kp K_APP       &trans
       // thumb row
-      &trans   &trans   &trans   &trans                                                 &trans   &trans   &trans   &trans
+      &trans   &trans   &trans   &trans                                                         &trans   &trans   &trans   &trans
       >;
     };
     
